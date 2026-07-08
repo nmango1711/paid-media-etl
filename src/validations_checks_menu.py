@@ -13,7 +13,7 @@ from validation_checks import (
 )
 
 
-df = pd.read_parquet("../data/cleaned_data/paid_media_output.parquet")
+df = pd.read_parquet("./data/cleaned_data/paid_media_output.parquet")
 
 
 def print_check_result(result):
@@ -68,7 +68,7 @@ def run_validations():
         print_check_result(result)
 
     elif choice == "7":
-        with open("../data/raw_data/paid_media_export.csv", "r") as f:
+        with open("./data/raw_data/paid_media_export.csv", "r") as f:
             raw_rows = sum(1 for _ in f) - 1 
         result = check_row_count(raw_rows,len(df))
         print_check_result(result)
