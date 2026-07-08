@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 from src.pipeline import transform_data
-import time
+import time, shutil
 
 def aggregate_data(df):
     return (
@@ -37,9 +37,13 @@ def process_ingestion_chunks():
 
     input_file = Path("./data/raw_data/paid_media_export.csv")
     output_dir = Path("./data/ingestion_chunks")
+
+    if output_dir.exists():
+        shutil.rmtree(output_dir)
+    
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    for i, chunk in enumerate(pd.read_csv(input_file, dtype=str ,chunksize = 100000), start = 1):
+    for i, chunk in enumerate(pd.read_csv(input_file, dtype=str ,chunksize = 150000), start = 1):
 
         print(f"Processing ingestion chunk: {i}")
 

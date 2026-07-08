@@ -1,6 +1,6 @@
 from pathlib import Path
 import pandas as pd
-import time
+import time, shutil
 
 
 def aggregate_data(df):
@@ -42,6 +42,9 @@ def batch_aggregation():
 
     input_dir = Path("./data/ingestion_chunks")
     output_dir = Path("./data/batch_chunks")
+
+    if output_dir.exists():
+        shutil.rmtree(output_dir)
 
     output_dir.mkdir(exist_ok=True)
 
