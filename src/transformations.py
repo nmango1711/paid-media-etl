@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 # "date" transformations
 def transform_date(df):
     df["date"] = df["date"].str.strip()
@@ -9,6 +10,7 @@ def transform_date(df):
     df = df[df["date"] <= pd.Timestamp.today().normalize()]
     df["date"] = df["date"].dt.strftime("%Y-%m-%d")
     return df
+
 
 # "platform" transformations
 def transform_platform(df):
@@ -30,6 +32,7 @@ def transform_platform(df):
     df = df.dropna(subset=["platform"])
     return df
 
+
 # "account_id" transformations
 def transform_account_id(df):
     df["account_id"] = (
@@ -40,6 +43,7 @@ def transform_account_id(df):
     df["account_id"] = df["account_id"].replace("", pd.NA)
     df = df.dropna(subset=["account_id"])
     return df
+
 
 # "campaign_id" transformations
 def transform_campaign_id(df):
@@ -52,6 +56,7 @@ def transform_campaign_id(df):
     df = df.dropna(subset=["campaign_id"])
     return df
 
+
 # "campaign_name" transformations
 def transform_campaign_name(df):
     df["campaign_name"] = (
@@ -63,6 +68,7 @@ def transform_campaign_name(df):
     df["campaign_name"] = df["campaign_name"].replace("", pd.NA)
     df["campaign_name"] = df["campaign_name"].fillna("UNKNOWN")
     return df
+
 
 # "impressions" transformations
 def transform_impressions(df):
@@ -78,6 +84,7 @@ def transform_impressions(df):
     df = df[df["impressions"].mod(1) == 0]
     df["impressions"] = df["impressions"].astype("int64")
     return df
+
 
 # "clicks" transformations
 def transform_clicks(df):
@@ -95,6 +102,7 @@ def transform_clicks(df):
     df["clicks"] = df["clicks"].astype("int64")
     return df
 
+
 # "spend" transformations
 def transform_spend(df):
     df["spend"] = (
@@ -109,6 +117,7 @@ def transform_spend(df):
     df = df[df["spend"] >= 0]
     df["spend"] = df["spend"].round(2)
     return df
+
 
 # "currency" transformations
 def transform_currency(df):
@@ -126,6 +135,7 @@ def transform_currency(df):
     df["currency"] = df["currency"].fillna("UNKNOWN")
     return df
 
+
 # "conversions" transformations
 def transform_conversions(df):
     df["conversions"] = (
@@ -138,6 +148,7 @@ def transform_conversions(df):
     df["conversions"] = df["conversions"].fillna(0)
     df = df[df["conversions"] >= 0]
     return df
+
 
 # "video_views" transformations
 def transform_video_views(df):

@@ -1,6 +1,6 @@
 import pandas as pd
 import json
-from data_quality import (
+from validation_checks import (
     check_nulls,
     check_duplicates,
     check_schema,

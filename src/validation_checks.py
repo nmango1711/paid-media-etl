@@ -23,6 +23,7 @@ def check_nulls(df):
         "rows_checked": int(len(df))
     }
 
+
 # Check schema
 def check_schema(df):
     required_columns = [
@@ -54,6 +55,7 @@ def check_schema(df):
         "rows_checked": len(df)
     }
 
+
 # Check duplicates
 def check_duplicates(df):
     grain_columns = [
@@ -80,6 +82,7 @@ def check_duplicates(df):
         "rows_checked": int(len(df))
     }
 
+
 # Check date validity
 def check_date_validity(df):
     df["date"] = pd.to_datetime(df["date"], errors="coerce")
@@ -96,6 +99,7 @@ def check_date_validity(df):
         "future_dates": int(future_dates),
         "rows_checked": int(len(df))
 }
+
 
 # Check numeric metrics
 def check_numeric_metrics(df):
@@ -128,6 +132,7 @@ def check_numeric_metrics(df):
         "rows_checked": int(len(df))
 }
 
+
 # Check platform values
 def check_platform_validation(df):
     allowed_platforms = {
@@ -152,6 +157,7 @@ def check_platform_validation(df):
         "invalid_platforms": invalid_platforms,
         "rows_checked": int(len(df))
 }
+
 
 # Check row count
 def check_row_count(raw_count, cleaned_count):
