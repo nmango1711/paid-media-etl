@@ -18,7 +18,7 @@ df = pd.read_parquet("./data/cleaned_data/paid_media_output.parquet")
 
 def print_check_result(result):
     symbol = "✅" if result["status"] == "PASS" else "❌"
-    result["status"] = f"{symbol} {result['status']}"
+    result["status"] = f" {result['status']} {symbol}"
 
     print(json.dumps(result, indent=4, ensure_ascii=False))
 
@@ -38,6 +38,7 @@ def run_validations():
     7. Row count check
     8. Display cleaned file details
     9. Show cleaned file sample
+          
     """)
 
     choice = input("Select check number: ")
@@ -74,12 +75,14 @@ def run_validations():
 
     elif choice == "8":
         print_info(df)
+        return
     
     elif choice == "9":
         show_df_sample(df)
-
+        return 
+    
     else:
-        print("Invalid option")
+        print("\nInvalid option")
         return
 
 

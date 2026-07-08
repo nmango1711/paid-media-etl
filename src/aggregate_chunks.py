@@ -36,9 +36,9 @@ def batch_aggregation():
 
     start_time = time.time()
 
-    print("***********************")
+    print("************************")
     print("Batch aggregations")
-    print("***********************")
+    print("************************")
 
     input_dir = Path("./data/ingestion_chunks")
     output_dir = Path("./data/batch_chunks")
@@ -63,8 +63,9 @@ def batch_aggregation():
 
         save_batch_chunk(df, output_dir, batch_number)
 
-        print("-----------------------")
+        print("------------------------")
         
     print("All batch chunks are aggregated and saved!!!")
+    print("------------------------\n")
 
     return time.time() - start_time

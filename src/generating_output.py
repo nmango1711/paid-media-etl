@@ -36,9 +36,9 @@ def generating_output():
 
     start_time = time.time()
 
-    print("***********************")
+    print("************************")
     print("Generating output file")
-    print("***********************")
+    print("************************")
 
     input_dir = Path("./data/batch_chunks")
     output_dir = Path("./data/cleaned_data")
@@ -56,6 +56,7 @@ def generating_output():
 
     save_final_output(df, output_dir)
         
-    print("Final output is generated!!!")
+    print("Cleaned output file is generated!!!")
+    print("------------------------\n")
 
     return time.time() - start_time

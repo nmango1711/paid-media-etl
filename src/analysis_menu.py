@@ -48,7 +48,7 @@ def run_analysis():
         return
 
     else:
-        print("Invalid option")
+        print("\nInvalid option")
         return
 
 

@@ -11,7 +11,7 @@ def total_spend_by_platform(df):
         .sort_values("spend", ascending=False)
     )
 
-    print("***************************")
+    print("\n***************************")
     print("Total spend by platform")
     print("---------------------------")
 
@@ -20,6 +20,7 @@ def total_spend_by_platform(df):
 
     for _, row in df.iterrows():
         print(f"{row['platform']:<40} {row['spend']:>20,.2f}")
+    print()
 
 
 # Top 5 campaigns by spend
@@ -33,7 +34,7 @@ def top_campings_by_spend(df):
         .head(5)
     )
 
-    print("***************************")
+    print("\n***************************")
     print("Top 5 campaigns by spend")
     print("---------------------------")
 
@@ -42,6 +43,7 @@ def top_campings_by_spend(df):
 
     for _, row in df.iterrows():
         print(f"{row['campaign_name']:<40} {row['spend']:>20,.2f}")
+    print()
 
 
 # Spend trend over time for one account
@@ -59,7 +61,7 @@ def spend_trend_by_account(df):
         .head(12)
     )
 
-    print("***********************")
+    print("\n***************************")
     print(f"Spend trend over time - account {account_id}")
     print("---------------------------")
 
@@ -68,6 +70,7 @@ def spend_trend_by_account(df):
 
     for _, row in df.iterrows():
         print(f"{row['date']:<40} {row['spend']:>20,.2f}")
+    print()
 
 
 # Average daily spend by platform
@@ -86,7 +89,7 @@ def average_daily_spend_by_platform(df):
         .reset_index()
     )
 
-    print("***********************")
+    print("\n***************************")
     print("Average daily spend by platform")
     print("---------------------------")
 
@@ -104,7 +107,8 @@ def average_daily_spend_by_platform(df):
             f"{row['total_spend']:>20,.2f}"
             f"{row['active_days']:>18}"
             f"{row['average_daily_spend']:>22,.2f}"
-)
+        )
+    print()
 
 
 # Campaigns using USD currency
@@ -119,8 +123,8 @@ def campaigns_using_usd(df):
         .sort_values("total_spend", ascending=False)
     )
 
-    print("***********************")
-    print("Campaigns Using USD Currency")
+    print("\n***************************")
+    print("Campaigns using USD currency")
     print("---------------------------")
 
     print(f"{'campaign_name':<40} {'total_spend':>20}")
@@ -131,3 +135,4 @@ def campaigns_using_usd(df):
             f"{row['campaign_name']:<40}"
             f"{row['total_spend']:>21,.2f}"
         )
+    print()

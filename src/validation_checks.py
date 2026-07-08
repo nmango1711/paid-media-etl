@@ -16,6 +16,7 @@ def check_nulls(df):
 
     passed = all(count == 0 for count in results.values())
 
+    print()
     return {
         "check": "Target grain null validation",
         "status": "PASS" if passed else "FAIL",
@@ -47,6 +48,7 @@ def check_schema(df):
 
     passed = len(missing_columns) == 0
 
+    print()
     return {
         "check": "Schema validation",
         "status": "PASS" if passed else "FAIL",
@@ -75,6 +77,7 @@ def check_duplicates(df):
 
     passed = duplicate_count == 0
 
+    print()
     return {
         "check": "Target grain duplicate validation",
         "status": "PASS" if passed else "FAIL",
@@ -92,6 +95,7 @@ def check_date_validity(df):
 
     passed = invalid_dates == 0 and future_dates == 0
 
+    print()
     return {
         "check": "Date validity validation",
         "status": "PASS" if passed else "FAIL",
@@ -125,6 +129,7 @@ def check_numeric_metrics(df):
 
     passed = len(failed_columns) == 0
 
+    print()
     return {
         "check": "Numeric metrics validation",
         "status": "PASS" if passed else "FAIL",
@@ -151,6 +156,7 @@ def check_platform_validation(df):
 
     passed = len(invalid_platforms) == 0
 
+    print()
     return {
         "check": "Platform validation",
         "status": "PASS" if passed else "FAIL",
@@ -165,6 +171,7 @@ def check_row_count(raw_count, cleaned_count):
     removed_rows = raw_count - cleaned_count
     removal_percentage = (removed_rows / raw_count) * 100
 
+    print()
     return {
         "check": "Row count monitoring",
         "status": "PASS",
@@ -174,10 +181,12 @@ def check_row_count(raw_count, cleaned_count):
         "removal_percentage": round(removal_percentage, 2)
 }
 
-# Print df info
-def print_info(df):
-    print(df.info())
 
-# Show df sample
+# Print cleaned file info
+def print_info(df):
+    print(f"\n{df.info()}")
+
+
+# Show cleaned file sample
 def show_df_sample(df):
-    print(df.head(10))
+    print(f"\n{df.head(10)}\n")

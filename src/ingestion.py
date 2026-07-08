@@ -31,10 +31,10 @@ def process_ingestion_chunks():
 
     start_time = time.time()
 
-    print("***********************")
+    print("************************")
     print("Starting pipeline")
-    print("***********************")
-
+    print("************************")
+    
     input_file = Path("./data/raw_data/paid_media_export.csv")
     output_dir = Path("./data/ingestion_chunks")
 
@@ -52,8 +52,9 @@ def process_ingestion_chunks():
 
         save_parquet(df, output_dir, i)
 
-        print("-----------------------")
+        print("------------------------")
 
     print("All ingestion chunks are processed and saved!!!")
+    print("------------------------\n")
 
     return time.time() - start_time

@@ -93,7 +93,6 @@ def transform_clicks(df):
         .str.replace(",", "", regex=False)
         .str.strip()
     )
-
     df["clicks"] = df["clicks"].replace("", pd.NA)
     df["clicks"] = pd.to_numeric(df["clicks"], errors="coerce")
     df = df.dropna(subset=["clicks"])
@@ -110,7 +109,6 @@ def transform_spend(df):
         .str.replace(",", "", regex=False)
         .str.strip()
     )
-
     df["spend"] = df["spend"].replace("", pd.NA)
     df["spend"] = pd.to_numeric(df["spend"], errors="coerce")
     df = df.dropna(subset=["spend"])
@@ -126,7 +124,6 @@ def transform_currency(df):
         .str.upper()
         .str.strip()
     )
-    
     df["currency"] = df["currency"].replace("", pd.NA)
     currency_map = {
         "EURO": "EUR",
@@ -142,7 +139,6 @@ def transform_conversions(df):
         df["conversions"]
         .str.strip()
     )
-
     df["conversions"] = df["conversions"].replace("", pd.NA)
     df["conversions"] = pd.to_numeric(df["conversions"], errors="coerce")
     df["conversions"] = df["conversions"].fillna(0)
@@ -156,7 +152,6 @@ def transform_video_views(df):
         df["video_views"]
         .str.strip()
     )
-
     df["video_views"] = df["video_views"].replace("", pd.NA)
     df["video_views"] = pd.to_numeric(df["video_views"], errors="coerce")
     df["video_views"] = df["video_views"].fillna(0)
