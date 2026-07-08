@@ -1,4 +1,6 @@
 /venv
-/data
+/data/batch_chunks
+/data/cleaned_data
+/data/ingestion_chunks
 __pycache__/
 *.pyc

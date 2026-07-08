@@ -31,3 +31,7 @@ def transform_data(df):
     print(rows_before)
     print(rows_after)
     print(f"Dropped rows: {rows_before - rows_after}")
+
+    
+
+    invalid = df[~df["campaign_id"].str.match(r"^camp_\d+$", na=False)]

@@ -1,16 +1,17 @@
 import pandas as pd
 
-def transform_data(df):
-    
-    # "date" transformations
+# "date" transformations
+def transform_date(df):
     df["date"] = df["date"].str.strip()
     df["date"] = df["date"].replace("", pd.NA)
     df["date"] = pd.to_datetime(df["date"], errors="coerce", format="mixed")
     df = df.dropna(subset=["date"])
     df = df[df["date"] <= pd.Timestamp.today().normalize()]
     df["date"] = df["date"].dt.strftime("%Y-%m-%d")
+    return df
 
-    # "platform" transformations
+# "platform" transformations
+def transform_platform(df):
     df["platform"] = (
         df["platform"]
         .str.lower()
@@ -27,8 +28,10 @@ def transform_data(df):
     }
     df["platform"] = df["platform"].map(mapping)
     df = df.dropna(subset=["platform"])
+    return df
 
-    # "account_id" transformations
+# "account_id" transformations
+def transform_account_id(df):
     df["account_id"] = (
         df["account_id"]
         .str.strip()
@@ -36,8 +39,10 @@ def transform_data(df):
     )
     df["account_id"] = df["account_id"].replace("", pd.NA)
     df = df.dropna(subset=["account_id"])
+    return df
 
-    # "campaign_id" transformations
+# "campaign_id" transformations
+def transform_campaign_id(df):
     df["campaign_id"] = (
         df["campaign_id"]
         .str.strip()
@@ -45,8 +50,10 @@ def transform_data(df):
     )
     df["campaign_id"] = df["campaign_id"].replace("", pd.NA)
     df = df.dropna(subset=["campaign_id"])
+    return df
 
-    # "campaign_name" transformations
+# "campaign_name" transformations
+def transform_campaign_name(df):
     df["campaign_name"] = (
         df["campaign_name"]
         .str.lower()
@@ -55,8 +62,10 @@ def transform_data(df):
     )
     df["campaign_name"] = df["campaign_name"].replace("", pd.NA)
     df["campaign_name"] = df["campaign_name"].fillna("UNKNOWN")
+    return df
 
-    # "impressions" transformations
+# "impressions" transformations
+def transform_impressions(df):
     df["impressions"] = (
         df["impressions"]
         .str.replace(",", "", regex=False)
@@ -68,8 +77,10 @@ def transform_data(df):
     df = df[df["impressions"] >= 0]
     df = df[df["impressions"].mod(1) == 0]
     df["impressions"] = df["impressions"].astype("int64")
+    return df
 
-    # "clicks" transfomation
+# "clicks" transformations
+def transform_clicks(df):
     df["clicks"] = (
         df["clicks"]
         .str.replace(",", "", regex=False)
@@ -82,8 +93,10 @@ def transform_data(df):
     df = df[df["clicks"] >= 0]
     df = df[df["clicks"].mod(1) == 0]
     df["clicks"] = df["clicks"].astype("int64")
+    return df
 
-    # "spend" transfomation
+# "spend" transformations
+def transform_spend(df):
     df["spend"] = (
         df["spend"]
         .str.replace(",", "", regex=False)
@@ -95,8 +108,10 @@ def transform_data(df):
     df = df.dropna(subset=["spend"])
     df = df[df["spend"] >= 0]
     df["spend"] = df["spend"].round(2)
+    return df
 
-    # "currency" transfomation
+# "currency" transformations
+def transform_currency(df):
     df["currency"] = (
         df["currency"]
         .str.upper()
@@ -109,8 +124,10 @@ def transform_data(df):
     }
     df["currency"] = df["currency"].replace(currency_map)
     df["currency"] = df["currency"].fillna("UNKNOWN")
-    
-    # "conversions" transfomation
+    return df
+
+# "conversions" transformations
+def transform_conversions(df):
     df["conversions"] = (
         df["conversions"]
         .str.strip()
@@ -120,8 +137,10 @@ def transform_data(df):
     df["conversions"] = pd.to_numeric(df["conversions"], errors="coerce")
     df["conversions"] = df["conversions"].fillna(0)
     df = df[df["conversions"] >= 0]
+    return df
 
-    # "video_views" transfomation
+# "video_views" transformations
+def transform_video_views(df):
     df["video_views"] = (
         df["video_views"]
         .str.strip()
@@ -131,7 +150,4 @@ def transform_data(df):
     df["video_views"] = pd.to_numeric(df["video_views"], errors="coerce")
     df["video_views"] = df["video_views"].fillna(0)
     df = df[df["video_views"] >= 0]
-
     return df
-
-    
