@@ -26,6 +26,7 @@ Raw CSV → Ingestion → Cleaning → Transformation → Aggregation → Batch 
 5. **Install libraries from requrenments.txt:** pip install -r requirements.txt 
 6. **From root of the project create folders and put source csv data in it**: /data/raw_data/paid_media_export.csv                 
 
+---
 ## Running the Pipeline
 
 **python main.py**
@@ -36,3 +37,39 @@ Raw CSV → Ingestion → Cleaning → Transformation → Aggregation → Batch 
 
 **python src/analysis_menu.py**
 - Interactive analysis script that provides multiple reporting options and allows users to choose which analysis to execute.
+
+---
+## Repository Structure
+```
+paid-media-etl/
+│
+├── data/                            
+│   ├── raw_data/
+│       ├── paid_media_export.csv    # Source csv data file
+│   ├── batch_chunks/                # Temporary storage for aggregated ingestion chunks
+│   ├── cleaned_data/                # Stores cleaned and transformed output data
+│   ├── ingestion_chunks/            # Stores intermediate chunks created during ingestion
+|
+├── src/                               
+│   ├── aggregate_chunks.py          # Aggregates processed ingestion chunks
+│   ├── analysis_menu.py             # Provides menu options for running analyses
+│   ├── analysis.py                  # Performs business analysis on processed data
+│   ├── generating_output.py         # Generates final output file
+│   ├── ingestion.py                 # Handles data ingestion from source files
+│   ├── pipeline.py                  # Orchestrates the complete data pipeline workflow
+│   ├── transformations.py           # Cleans and transforms raw data
+│   ├── validation_checks.py         # Performs data quality validation checks
+│   ├── validation_checks_menu.py    # Provides menu options for validation checks
+│
+├── venv/                            # Virtual environment
+│                          
+├── .gitignore                       # gitignore file
+│
+├── main.py                          # Main pipeline script for ingesting, cleaning, transforming and generating output file 
+│
+├── README.md                        # README.md file
+│
+├── requirements.txt                 # File for necessary libraries installation
+                                      
+```
+---
