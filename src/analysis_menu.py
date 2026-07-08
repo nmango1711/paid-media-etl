@@ -8,7 +8,7 @@ from analysis import (
 )
 
 
-df = pd.read_parquet("./data/cleaned_data/paid_media_output.parquet")
+df = pd.read_parquet("../data/cleaned_data/paid_media_output.parquet")
 
 
 def run_analysis():
