@@ -22,7 +22,7 @@ Raw CSV → Ingestion → Cleaning → Transformation → Aggregation → Batch 
 
 1. **Clone repository:** git clone https://github.com/nmango1711/paid-media-etl.git
 2. **Navigate to the root of the project:** cd paid-media-etl
-3. **Create virtual environment:** python -m venv venv
+3. **Create virtual environment:** python3 -m venv venv
 4. **Activate virtual environment:** source venv/bin/activate
 5. **Install libraries from requirements.txt:** pip install -r requirements.txt 
 6. **From root of the project create folders and put source csv data in it**: /data/raw_data/paid_media_export.csv                 
@@ -30,14 +30,17 @@ Raw CSV → Ingestion → Cleaning → Transformation → Aggregation → Batch 
 ---
 ## Running the Pipeline
 
-- **python main.py**
+- **python3 main.py**
   - Main pipeline script responsible for data ingestion, cleaning, transformations, and generating the final cleaned output file.
 
-- **python src/validations_checks_menu.py**
+- **python3 src/validations_checks_menu.py**
   - Interactive validation script that allows users to select and run specific data quality checks.
 
-- **python src/analysis_menu.py**
+- **python3 src/analysis_menu.py**
   - Interactive analysis script that provides multiple reporting options and allows users to choose which analysis to execute.
+```
+If your environment uses python for Python 3, you can use python instead of python3 in all commands.
+```
 
 ---
 ## Repository Structure
