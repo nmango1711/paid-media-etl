@@ -24,7 +24,7 @@ Raw CSV → Ingestion → Cleaning → Transformation → Aggregation → Batch 
 2. **Navigate to the root of the project:** cd paid-media-etl
 3. **Create virtual environment:** python -m venv venv
 4. **Activate virtual environment:** source venv/bin/activate
-5. **Install libraries from requrenments.txt:** pip install -r requirements.txt 
+5. **Install libraries from requirements.txt:** pip install -r requirements.txt 
 6. **From root of the project create folders and put source csv data in it**: /data/raw_data/paid_media_export.csv                 
 
 ---
