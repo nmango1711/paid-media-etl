@@ -39,7 +39,8 @@ Raw CSV → Ingestion → Cleaning → Transformation → Aggregation → Batch 
 - **python3 src/analysis_menu.py**
   - Interactive analysis script that provides multiple reporting options and allows users to choose which analysis to execute.
 ```
-If your environment uses python for Python 3, you can use python instead of python3 in all commands.
+- If your environment uses python for Python 3, you can use python instead of python3 in all commands.
+- If you close your terminal or start a new session, remember to activate the virtual environment before running the project again.
 ```
 
 ---
